@@ -32,7 +32,7 @@ public class Group implements Voenkom {
             if (student[i] == null) {
                 s.setGroup(this.groupName);
                 student[i] = s;
-                System.out.println("Student " + s.getName() + s.getLastame() + " was successfully added");
+                //   System.out.println("Student " + s.getName() + " " + s.getLastame() + " was successfully added");
                 return;
             }
         }
@@ -62,11 +62,6 @@ public class Group implements Voenkom {
     }
 
     public void addStudentInteractive() throws myException {
-        int freePlace = 0;
-        for (int i = 0; i < student.length; i++) {
-            freePlace = i;
-            System.out.println("There is a free place in group. You can add student");
-        }
         while (true) {
             Student s = new Student();
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -83,9 +78,10 @@ public class Group implements Voenkom {
                 s.setGroup(reader.readLine());
                 System.out.println("Please enter student zach:");
                 s.setZach(Long.parseLong(reader.readLine()));
-                student[freePlace] = s;
+
                 addStudent(new Student());
-                System.out.println("Student " + s.getName() + s.getLastame() + " is added to the group: " + groupName);
+                System.out.println(
+                    "Student " + s.getName() + " " + s.getLastame() + " is added to the group: " + s.getGroup());
                 break;
             } catch (Exception e) {
                 System.out.println("Invalid enter, student is not added, try again? (y / n):");

@@ -72,6 +72,7 @@ public class Main {
 
         group.searchByLastname("Tutov");
         group.deleteStudent(566666433);
+        group.deleteStudent(1238881);
 
         group.addStudentInteractive();
 
