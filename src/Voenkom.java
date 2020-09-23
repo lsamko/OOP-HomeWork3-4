@@ -1,4 +1,4 @@
 public interface Voenkom {
 
-    public Student[] getRecruter();
+    public Student[] getRecruiter();
 }

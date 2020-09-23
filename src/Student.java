@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Student extends Human {
 
     private long zach;
@@ -34,5 +36,23 @@ public class Student extends Human {
             "zach=" + zach +
             ", group='" + group + '\'' +
             ']' + super.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Student)) {
+            return false;
+        }
+        Student student = (Student) o;
+        return getZach() == student.getZach() &&
+            Objects.equals(getGroup(), student.getGroup());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getZach(), getGroup());
     }
 }

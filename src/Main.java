@@ -16,63 +16,25 @@ public class Main {
 
         try {
             group.addStudent(student1);
-        } catch (myException e) {
-            e.printStackTrace();
-        }
-        try {
             group.addStudent(student2);
-        } catch (myException e) {
-            e.printStackTrace();
-        }
-        try {
             group.addStudent(student3);
-        } catch (myException e) {
-            e.printStackTrace();
-        }
-        try {
             group.addStudent(student4);
-        } catch (myException e) {
-            e.printStackTrace();
-        }
-        try {
             group.addStudent(student5);
-        } catch (myException e) {
-            e.printStackTrace();
-        }
-        try {
             group.addStudent(student6);
-        } catch (myException e) {
-            e.printStackTrace();
-        }
-        try {
             group.addStudent(student7);
-        } catch (myException e) {
-            e.printStackTrace();
-        }
-        try {
             group.addStudent(student8);
-        } catch (myException e) {
-            e.printStackTrace();
-        }
-        try {
             group.addStudent(student9);
-        } catch (myException e) {
-            e.printStackTrace();
-        }
-        try {
             group.addStudent(student10);
         } catch (myException e) {
             e.printStackTrace();
         }
-//        try {
-//            group.addStudent(student11);
-//        } catch (myException e) {
-//            e.printStackTrace();
-//        }
+        System.out.println(group.toString());
 
         group.searchByLastname("Tutov");
         group.deleteStudent(566666433);
-        group.deleteStudent(1238881);
+        group.deleteStudent(30192831);
+        group.getRecruiter();
+
 
         group.addStudentInteractive();
 

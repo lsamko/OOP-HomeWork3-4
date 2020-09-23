@@ -5,15 +5,18 @@ import java.util.Arrays;
 
 public class Group implements Voenkom {
 
-    Student[] student = new Student[10];
+    private Student[] student = new Student[10];
     private String groupName;
 
     public Group() {
-        this.groupName = "unknown";
     }
 
-    public Group(String groupName) {
-        this.groupName = groupName;
+    public Student[] getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student[] student) {
+        this.student = student;
     }
 
     public String getGroupName() {
@@ -32,11 +35,12 @@ public class Group implements Voenkom {
             if (student[i] == null) {
                 s.setGroup(this.groupName);
                 student[i] = s;
-                //   System.out.println("Student " + s.getName() + " " + s.getLastame() + " was successfully added");
-                return;
+                break;
+            }
+            if (i == this.student.length - 1 && this.student[i] != null) {
+                throw new myException();
             }
         }
-        throw new myException();
     }
 
     public Student searchByLastname(String lastname) {
@@ -61,7 +65,7 @@ public class Group implements Voenkom {
         return false;
     }
 
-    public void addStudentInteractive() throws myException {
+    public void addStudentInteractive() {
         while (true) {
             Student s = new Student();
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -99,12 +103,9 @@ public class Group implements Voenkom {
         }
     }
 
-    public void sortByParameter(int i) {
-        Arrays.sort(this.student, new StudentComparator(i));
-    }
-
-    public void sortByParameter(int i, boolean forward) {
-        Arrays.sort(this.student, new StudentComparator(i, forward));
+    public Student[] sortStudentsByName(Student[]students) {
+        Arrays.sort(students, new StudentComparator());
+        return students;
     }
 
     @Override
@@ -113,28 +114,28 @@ public class Group implements Voenkom {
         sb.append("Group").append(this.groupName).append(System.lineSeparator());
         int i = 0;
         return "Group{" +
-            "student=" + Arrays.toString(student) +
-            ", groupName='" + groupName + '\'' +
+            "student=" + Arrays.toString(sortStudentsByName(student)) + '\'' +
             '}';
     }
 
     @Override
-    public Student[] getRecruter() {
+    public Student[] getRecruiter() {
         int n = 0;
         for (Student s : student) {
             if (s != null && s.getSex().equals(Sex.MALE) && s.getAge() >= 18) {
                 n += 1;
             }
         }
-        Student[] recruterArray = new Student[n];
+        Student[] recruiterArray = new Student[n];
         int i = 0;
         for (Student s : student) {
             if (s != null && s.getSex().equals(Sex.MALE) && s.getAge() >= 18) {
-                recruterArray[i] = s;
+                recruiterArray[i] = s;
                 i += 1;
             }
         }
-        return recruterArray;
+        System.out.println(Arrays.toString(recruiterArray));
+        return recruiterArray;
     }
 }
 
